@@ -2,19 +2,18 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { HERO_SECTION } from "@/constants";
+import { HERO_SECTION, LINKS } from "@/constants";
 import { ArrowRight, ShieldCheck, TrendingUp } from "lucide-react";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Ambient Light */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-gold/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10 text-center">
-        {/* Top Badge */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -25,7 +24,6 @@ const Hero = () => {
           <span>Verified Financial Frameworks</span>
         </motion.div>
 
-        {/* Main Headline */}
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,7 +38,6 @@ const Hero = () => {
           </span>
         </motion.h1>
 
-        {/* Subheadline */}
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,23 +47,23 @@ const Hero = () => {
           {HERO_SECTION.subtitle}
         </motion.p>
 
-        {/* CTA Group */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button variant="premium" size="lg" className="group">
-            {HERO_SECTION.cta}
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <Button variant="premium" size="lg" className="group" asChild>
+            <Link href={LINKS.generalAccess}>
+              {HERO_SECTION.cta}
+              <ArrowRight className="ml-2 w-5 h-s-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
-          <Button variant="secondary" size="lg">
-            View The Curriculum
+          <Button variant="secondary" size="lg" asChild>
+            <Link href="#pricing">View The Curriculum</Link>
           </Button>
         </motion.div>
 
-        {/* Trust Indicators */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

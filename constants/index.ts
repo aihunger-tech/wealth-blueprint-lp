@@ -1,6 +1,14 @@
 export const SITE_CONFIG = {
   name: "The Wealth Blueprint",
   description: "Master Your Money. Outsmart the Market.",
+  baseUrl: "https://blueprint-lp.vercel.app/", 
+};
+
+export const LINKS = {
+  checkoutBasic: "https://blueprint-lp.vercel.app/checkout?tier=basic",
+  checkoutPro: "https://blueprint-lp.vercel.app/checkout?tier=pro",
+  checkoutElite: "https://blueprint-lp.vercel.app/checkout?tier=elite",
+  generalAccess: "https://blueprint-lp.vercel.app/", 
 };
 
 export const HERO_SECTION = {
@@ -57,6 +65,7 @@ export const PRICING_TIERS = [
     features: ["Core Financial PDF", "Budgeting Framework", "Debt Exit Strategy"],
     highlight: false,
     cta: "Start Now",
+    link: "checkoutBasic", // References LINKS.checkoutBasic
   },
   {
     name: "Pro Bundle",
@@ -65,6 +74,7 @@ export const PRICING_TIERS = [
     features: ["All Basic Guides", "Investment Strategy Guide", "Portfolio Tracker Templates", "Exclusive Community Access"],
     highlight: true,
     cta: "Get the Bundle",
+    link: "checkoutPro", // References LINKS.checkoutPro
   },
   {
     name: "Elite Course",
@@ -73,6 +83,7 @@ export const PRICING_TIERS = [
     features: ["Everything in Pro", "Full Video Course", "1-on-1 Strategy Call", "Lifetime Updates"],
     highlight: false,
     cta: "Join the Elite",
+    link: "checkoutElite", // References LINKS.checkoutElite
   },
 ];
 

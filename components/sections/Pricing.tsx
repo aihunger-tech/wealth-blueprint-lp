@@ -2,9 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { PRICING_TIERS } from "@/constants";
+import { PRICING_TIERS, LINKS } from "@/constants";
 import { Check, Crown, Zap, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -98,9 +99,12 @@ const Pricing = () => {
                 <Button 
                   variant={tier.highlight ? "premium" : "outline"} 
                   size="lg" 
-                  className="w-full py-3 md:py-4"
+                  className="w-full py-3 md:py-4" 
+                  asChild
                 >
-                  {tier.cta}
+                  <Link href={(LINKS as any)[tier.link]}>
+                    {tier.cta}
+                  </Link>
                 </Button>
               </Card>
             </motion.div>
