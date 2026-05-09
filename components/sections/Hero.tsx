@@ -1,87 +1,79 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { HERO_SECTION, LINKS } from "@/constants";
-import { ArrowRight, ShieldCheck, TrendingUp } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 
-const Hero = () => {
+export default function Hero() {
+  const scrollToVault = () => {
+    const element = document.getElementById("pricing");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20">
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-gold/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
+    <section className="relative px-6 py-20 md:py-32 overflow-hidden">
+      {/* Ambient Background Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-brand-gold/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-brand-gold/5 blur-[100px] rounded-full pointer-events-none -z-10" />
 
-      <div className="container mx-auto px-6 relative z-10 text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs font-medium mb-8"
-        >
-          <ShieldCheck className="w-3 h-3 text-brand-gold" />
-          <span>Verified Financial Frameworks</span>
-        </motion.div>
+      <div className="max-w-5xl mx-auto text-center">
+        {/* Validation Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-bold uppercase tracking-widest mb-8 animate-fade-in">
+          <Sparkles className="w-3 h-3" />
+          <span>Analysis Complete</span>
+        </div>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-white mb-6"
-        >
-          <span className="block text-zinc-500 text-3xl md:text-4xl font-medium mb-2">
-            Stop Guessing. Start Building.
-          </span>
-          <span className="text-gold-gradient">
-            {HERO_SECTION.title}
-          </span>
-        </motion.h1>
+        {/* Main Headline */}
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-8">
+          Your Custom Blueprint to <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-amber-200 to-brand-gold">
+            Financial Freedom
+          </span> is Ready.
+        </h1>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-2xl mx-auto text-zinc-400 text-lg md:text-xl leading-relaxed mb-10"
-        >
-          {HERO_SECTION.subtitle}
-        </motion.p>
+        {/* Sub-headline */}
+        <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+          We've processed your <span className="text-white font-semibold">Financial Reality Check</span>. 
+          The gaps in your current wealth strategy have been identified—now it's time to fix them with professional, 
+          research-backed tools.
+        </p>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button variant="premium" size="lg" className="group" asChild>
-            <Link href={LINKS.generalAccess}>
-              {HERO_SECTION.cta}
-              <ArrowRight className="ml-2 w-5 h-s-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
-          <Button variant="secondary" size="lg" asChild>
-            <Link href="#pricing">View The Curriculum</Link>
-          </Button>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-16 flex items-center justify-center gap-8 text-zinc-500 text-sm"
-        >
-          <div className="flex items-center gap-2">
-            <TrendingUp className="w-4 h-4" />
-            <span>Optimized Portfolio Growth</span>
+        {/* Action Area */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+          <button 
+            onClick={scrollToVault}
+            className="group relative px-8 py-4 bg-brand-gold text-brand-black font-bold rounded-full transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(217,119,6,0.4)] active:scale-95 flex items-center gap-2"
+          >
+            Unlock My Blueprint
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+          
+          <div className="flex items-center gap-3 text-slate-500 text-sm font-medium">
+            <div className="flex -space-x-2">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="w-6 h-6 rounded-full border-2 border-brand-black bg-slate-800" />
+              ))}
+            </div>
+            <span>Joined by 5,000+ investors</span>
           </div>
-          <div className="hidden sm:flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4" />
-            <span>Risk-Adjusted Strategies</span>
-          </div>
-        </motion.div>
+        </div>
+
+        {/* Trust Indicators */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          {[
+            "Research-Backed",
+            "Instant Access",
+            "Professional Grade",
+            "Secure Payment"
+          ].map((text, i) => (
+            <div key={i} className="flex items-center justify-center gap-2 text-slate-500 text-xs md:text-sm font-medium">
+              <CheckCircle2 className="w-4 h-4 text-brand-gold" />
+              {text}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

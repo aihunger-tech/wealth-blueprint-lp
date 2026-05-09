@@ -1,88 +1,147 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { Card } from "@/components/ui/Card";
-import { FileText, Layout, PlayCircle, Layers } from "lucide-react";
+import { Eye, FileText, Layers, Zap, Lock, CheckCircle2 } from "lucide-react";
 
-const Preview = () => {
-  const mockups = [
-    {
-      title: "The Asset Map",
-      desc: "Visualizing your net worth and burn rate.",
-      icon: <Layout className="w-5 h-5" />,
-      color: "bg-brand-gold/10",
-    },
-    {
-      title: "Debt Exit Strategy",
-      desc: "The mathematical sequence for debt elimination.",
-      icon: <FileText className="w-5 h-5" />,
-      color: "bg-zinc-800",
-    },
-    {
-      title: "Portfolio Scaling",
-      desc: "Advanced diversification and risk models.",
-      icon: <Layers className="w-5 h-5" />,
-      color: "bg-brand-gold/20",
-    },
-    {
-      title: "Video Masterclass",
-      desc: "Step-by-step execution of the blueprint.",
-      icon: <PlayCircle className="w-5 h-5" />,
-      color: "bg-zinc-800",
-    },
-  ];
+const PREVIEW_ASSETS = [
+  {
+    title: "The Debt-Exit Strategy",
+    type: "Research PDF",
+    previewColor: "from-blue-500/20 to-slate-900",
+    secrets: [
+      "The 'Payment Cascade' method to kill interest",
+      "Psychological triggers to avoid relapse",
+      "Credit score acceleration hacks",
+      "The 24-hour emergency fund blueprint"
+    ],
+    icon: <FileText className="w-6 h-6 text-blue-400" />
+  },
+  {
+    title: "Smart Invest Tool",
+    type: "Interactive Calculator",
+    previewColor: "from-amber-500/20 to-slate-900",
+    secrets: [
+      "Dynamic Asset Allocation matrix",
+      "Risk-adjusted return calculator",
+      "Age-based aggressive growth model",
+      "Portfolio rebalancing automation logic"
+    ],
+    icon: <Zap className="w-6 h-6 text-amber-400" />
+  },
+  {
+    title: "Wealth Accelerator",
+    type: "Elite Research",
+    previewColor: "from-emerald-500/20 to-slate-900",
+    secrets: [
+      "Top 3 under-valued asset classes for 2024",
+      "Institutional 'Sleeper' investment strategies",
+      "Compound interest acceleration maps",
+      "The Wealth-Velocity formula"
+    ],
+    icon: <Layers className="w-6 h-6 text-emerald-400" />
+  }
+];
 
+export default function Preview() {
   return (
-    <section className="py-24 w-full bg-brand-black relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            A Peek <span className="text-gold-gradient">Inside the Blueprint</span>
-          </h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
-            No fluff. No filler. Just high-signal frameworks designed for immediate implementation.
-          </p>
+    <section className="px-6 py-24 max-w-7xl mx-auto">
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-4">
+          <Eye className="w-3 h-3" />
+          <span>Sneak Peek</span>
         </div>
+        <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
+          Peek Inside the <span className="text-brand-gold">Wealth Vault</span>
+        </h2>
+        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          We don't believe in blind faith. Here is exactly what you are unlocking 
+          when you secure your blueprint.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {mockups.map((item, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card className="p-4 group cursor-pointer">
-                <div className={cn("aspect-[4/3] rounded-lg mb-4 flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:scale-95", item.color)}>
-                   {/* Abstract "Page" lines to simulate a PDF/Course */}
-                   <div className="absolute inset-0 p-4 flex flex-col gap-2 opacity-30">
-                      <div className="h-2 w-full bg-white/20 rounded" />
-                      <div className="h-2 w-3/4 bg-white/20 rounded" />
-                      <div className="h-2 w-5/6 bg-white/20 rounded" />
-                      <div className="h-2 w-1/2 bg-white/20 rounded" />
-                      <div className="mt-4 h-12 w-full bg-white/10 rounded-lg" />
-                   </div>
-                   <div className="relative z-10 p-3 rounded-full bg-brand-black border border-zinc-800 text-brand-gold group-hover:text-white group-hover:border-brand-gold transition-colors">
-                     {item.icon}
-                   </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        {PREVIEW_ASSETS.map((asset, index) => (
+          <div 
+            key={index} 
+            className="group relative bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-brand-gold/30 transition-all duration-500"
+          >
+            {/* Visual Mockup Area */}
+            <div className={`h-64 relative overflow-hidden bg-gradient-to-b ${asset.previewColor} flex items-center justify-center p-8`}>
+              {/* Simulated Document/Tool UI */}
+              <div className="w-full h-full bg-slate-950 rounded-lg border border-slate-700 shadow-2xl p-4 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                <div className="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+                  <div className="w-2 h-2 rounded-full bg-red-500" />
+                  <div className="w-2 h-2 rounded-full bg-amber-500" />
+                  <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span className="text-[8px] text-slate-500 ml-auto font-mono">SECURE_ACCESS_V1.0</span>
                 </div>
-                <h3 className="text-white font-bold text-center mb-1">{item.title}</h3>
-                <p className="text-zinc-500 text-xs text-center leading-relaxed">
-                  {item.desc}
-                </p>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+                
+                <div className="space-y-3">
+                  <div className="h-2 w-3/4 bg-slate-800 rounded" />
+                  <div className="h-2 w-full bg-slate-800 rounded" />
+                  <div className="h-2 w-5/6 bg-slate-800 rounded" />
+                  <div className="h-12 w-full bg-brand-gold/10 border border-brand-gold/20 rounded-md mt-4 flex items-center justify-center">
+                    <Lock className="w-4 h-4 text-brand-gold" />
+                  </div>
+                  <div className="h-2 w-2/3 bg-slate-800 rounded" />
+                </div>
+              </div>
+              
+              {/* Floating Icon */}
+              <div className="absolute bottom-4 right-4 p-3 bg-slate-900 rounded-2xl border border-slate-700 shadow-xl">
+                {asset.icon}
+              </div>
+            </div>
+
+            {/* Details Area */}
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-bold group-hover:text-brand-gold transition-colors">
+                  {asset.title}
+                </h3>
+                <span className="text-[10px] font-bold uppercase tracking-tighter text-slate-500 bg-slate-800 px-2 py-1 rounded">
+                  {asset.type}
+                </span>
+              </div>
+
+              <div className="space-y-4">
+                {asset.secrets.map((secret, i) => (
+                  <div key={i} className="flex items-start gap-3 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <span>{secret}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between opacity-60 group-hover:opacity-100 transition-opacity">
+                <span className="text-xs font-medium text-slate-500 italic">Full access included in vault</span>
+                <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-brand-gold group-hover:text-brand-black transition-all cursor-pointer">
+                  <ChevronRight className="w-4 h-4" />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
-};
-
-function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(' ');
 }
 
-export default Preview;
+// Helper component for the arrow (used in the details area)
+function ChevronRight(props: any) {
+    return (
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            {...props}
+        >
+            <path d="m9 18 6-6-6-6"/>
+        </svg>
+    );
+}

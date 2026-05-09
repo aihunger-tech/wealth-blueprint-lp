@@ -1,118 +1,161 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-import { PRICING_TIERS, LINKS } from "@/constants";
-import { Check, Crown, Zap, Star } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Check, Lock, Zap, ShoppingCart, ShieldCheck } from "lucide-react";
 
-const Pricing = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
-  };
+/**
+ * PAYMENT CONFIGURATION
+ * Replace these placeholders with your LemonSqueezy checkout links.
+ * If a link is left empty (""), the app will show a "Coming Soon" message instead of crashing.
+ */
+const PRODUCT_LINKS = {
+  debtExit: "",      // Paste link for Debt-Exit Strategy here
+  smartInvest: "",   // Paste link for Smart Invest Tool here
+  wealthAccel: "",   // Paste link for Wealth Accelerator here
+  masterBundle: "",  // Paste link for Master Blueprint here
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+const INDIVIDUAL_PRODUCTS = [
+  {
+    id: "debtExit",
+    name: "Debt-Exit Strategy",
+    price: "9",
+    description: "Complete the debt-kill framework.",
+    feature: "Debt Repayment Map",
+  },
+  {
+    id: "smartInvest",
+    name: "Smart Invest Tool",
+    price: "15",
+    description: "Age-based allocation calculator.",
+    feature: "Asset Allocation Matrix",
+  },
+  {
+    id: "wealthAccel",
+    name: "Wealth Accelerator",
+    price: "7",
+    description: "Elite research on high-yield assets.",
+    feature: "Market Opportunity List",
+  },
+];
+
+export default function Pricing() {
+  
+  // Handle the redirection to the payment gateway
+  const handleUnlock = (productId: keyof typeof PRODUCT_LINKS) => {
+    const url = PRODUCT_LINKS[productId];
+    
+    if (url && url !== "") {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      alert("This blueprint is being finalized and will be available shortly. Stay tuned!");
+    }
   };
 
   return (
-    <section id="pricing" className="py-20 md:py-24 w-full relative overflow-hidden px-4">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none" />
+    <section id="pricing" className="px-6 py-24 max-w-7xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
+          Unlock Your <span className="text-brand-gold">Wealth Vault</span>
+        </h2>
+        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          Choose the level of access you need. Every blueprint is delivered instantly 
+          to your email upon secure checkout.
+        </p>
+      </div>
 
-      <div className="container mx-auto relative z-10">
-        <div className="text-center mb-12 md:mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight"
-          >
-            Choose Your <span className="text-gold-gradient">Wealth Path</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-zinc-400 max-w-2xl mx-auto text-base md:text-lg px-4"
-          >
-            Invest in your financial education today. Get instant access to the 
-            blueprints and tools used by the top 1% of disciplined investors.
-          </motion.p>
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+        
+        {/* Individual Products Column */}
+        <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {INDIVIDUAL_PRODUCTS.map((product, index) => (
+            <div 
+              key={index} 
+              className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-all flex flex-col"
+            >
+              <div className="mb-6 p-3 w-fit rounded-xl bg-slate-800 text-slate-400">
+                <Lock className="w-5 h-5" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+              <p className="text-slate-500 text-sm mb-6 leading-relaxed">
+                {product.description}
+              </p>
+              <div className="mt-auto">
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-3xl font-extrabold text-white">${product.price}</span>
+                  <span className="text-slate-500 text-xs uppercase font-bold">USD</span>
+                </div>
+                <button 
+                  onClick={() => handleUnlock(product.id as keyof typeof PRODUCT_LINKS)}
+                  className="w-full py-3 rounded-full bg-slate-800 text-white font-bold text-sm hover:bg-slate-700 transition-colors flex items-center justify-center gap-2 group"
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  Unlock Tool
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-center"
-        >
-          {PRICING_TIERS.map((tier, index) => (
-            <motion.div variants={itemVariants} key={index} className="relative px-2 sm:px-0">
-              {tier.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                  <span className="px-4 py-1 rounded-full bg-gold-gradient text-brand-black text-xs font-bold uppercase tracking-widest flex items-center gap-1 shadow-lg">
-                    <Star className="w-3 h-3 fill-brand-black" /> Most Popular
-                  </span>
-                </div>
-              )}
+        {/* THE MASTER BUNDLE (High-Conversion Card) */}
+        <div className="lg:col-span-1 relative">
+          {/* Glow Effect */}
+          <div className="absolute inset-0 bg-brand-gold/20 blur-[60px] rounded-full pointer-events-none" />
+          
+          <div className="relative p-8 rounded-3xl bg-gradient-to-b from-slate-800 to-slate-950 border-2 border-brand-gold shadow-[0_0_40px_rgba(217,119,6,0.2)] flex flex-col">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-gold text-brand-black text-[10px] font-black uppercase tracking-tighter">
+              Best Value
+            </div>
+            
+            <div className="text-center mb-8">
+              <div className="flex justify-center mb-4 text-brand-gold">
+                <Zap className="w-10 h-10 animate-pulse" />
+              </div>
+              <h3 className="text-2xl font-extrabold mb-2">Master Blueprint</h3>
+              <p className="text-slate-400 text-sm">All tools + Lifetime Updates</p>
+            </div>
 
-              <Card 
-                highlight={tier.highlight} 
-                className={cn(
-                  "p-6 md:p-8 flex flex-col h-full transition-all duration-300",
-                  tier.highlight ? "sm:scale-105 z-10 border-brand-gold/40" : "hover:scale-102"
-                )}
-              >
-                <div className="mb-8">
-                  <div className="flex items-center gap-2 mb-2">
-                    {tier.name === "Elite Course" ? <Crown className="w-5 h-5 text-brand-gold" /> : <Zap className="w-5 h-5 text-brand-gold" />}
-                    <h3 className="text-lg md:text-xl font-bold text-white">{tier.name}</h3>
-                  </div>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl md:text-4xl font-extrabold text-white">{tier.price}</span>
-                    <span className="text-zinc-500 text-xs md:text-sm">/once</span>
-                  </div>
-                  <p className="text-zinc-400 mt-3 text-xs md:text-sm leading-relaxed">
-                    {tier.description}
-                  </p>
+            <div className="space-y-4 mb-10">
+              {INDIVIDUAL_PRODUCTS.map((p, i) => (
+                <div key={i} className="flex items-center gap-3 text-sm text-slate-300">
+                  <Check className="w-4 h-4 text-brand-gold" />
+                  <span>{p.name}</span>
                 </div>
+              ))}
+              <div className="flex items-center gap-3 text-sm text-brand-gold font-bold">
+                <Check className="w-4 h-4" />
+                <span>Priority Support</span>
+              </div>
+            </div>
 
-                <div className="flex flex-col gap-4 mb-10 flex-grow">
-                  {tier.features.map((feature, fIndex) => (
-                    <div key={fIndex} className="flex items-start gap-3 text-xs md:text-sm text-zinc-300">
-                      <Check className="w-4 h-4 text-brand-gold shrink-0 mt-1" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <span className="text-slate-500 line-through text-lg font-medium">$31</span>
+                <span className="text-4xl font-black text-white">$27</span>
+              </div>
+              <span className="text-[10px] text-brand-gold uppercase font-bold tracking-widest">One-time payment</span>
+            </div>
 
-                <Button 
-                  variant={tier.highlight ? "premium" : "outline"} 
-                  size="lg" 
-                  className="w-full py-3 md:py-4" 
-                  asChild
-                >
-                  <Link href={(LINKS as any)[tier.link]}>
-                    {tier.cta}
-                  </Link>
-                </Button>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+            <button 
+              onClick={() => handleUnlock('masterBundle')}
+              className="w-full py-4 rounded-full bg-brand-gold text-brand-black font-black text-lg hover:scale-105 transition-all active:scale-95 shadow-lg shadow-brand-gold/30"
+            >
+              Unlock All Now
+            </button>
+
+            <div className="mt-6 flex flex-col items-center gap-3">
+              <div className="flex items-center gap-2 text-slate-500 text-[10px] font-medium uppercase tracking-wider">
+                <ShieldCheck className="w-3 h-3 text-brand-gold" />
+                Money-Back Guarantee
+              </div>
+              <div className="flex items-center gap-2 text-slate-500 text-[10px] font-medium uppercase tracking-wider">
+                <Zap className="w-3 h-3 text-brand-gold" />
+                Instant Digital Delivery
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Pricing;
+}
