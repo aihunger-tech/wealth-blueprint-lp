@@ -21,7 +21,7 @@ export const SOCIAL_PROOF = {
   stats: [
     { label: "Active Users", value: "12,000+" },
     { label: "Guides Downloaded", value: "45K+" },
-    { label: "Wealth Generated", value: "$10M+" },
+    { label: "Strategies Implemented", value: "8,000+" },
   ],
   testimonials: [
     {
@@ -43,17 +43,17 @@ export const VALUE_STACK = [
   {
     title: "The Core Guides",
     description: "Step-by-step PDF blueprints covering everything from debt elimination to advanced portfolio scaling.",
-    outcome: "Complete financial clarity in under 48 hours.",
+    outcome: "A structured path toward financial clarity.",
   },
   {
     title: "Strategic Frameworks",
     description: "Proprietary models for risk management and tax optimization.",
-    outcome: "Stop leaking money to inflation and inefficient taxes.",
+    outcome: "Minimize wealth leakage to inflation and inefficient taxes.",
   },
   {
     title: "Wealth Tools",
     description: "Access to the same calculators and trackers used in the Wealth Control Center.",
-    outcome: "Predict your financial freedom date with mathematical precision.",
+    outcome: "Estimate your financial freedom date with mathematical precision.",
   },
 ];
 
@@ -65,7 +65,7 @@ export const PRICING_TIERS = [
     features: ["Core Financial PDF", "Budgeting Framework", "Debt Exit Strategy"],
     highlight: false,
     cta: "Start Now",
-    link: "checkoutBasic", // References LINKS.checkoutBasic
+    link: "checkoutBasic", 
   },
   {
     name: "Pro Bundle",
@@ -74,7 +74,7 @@ export const PRICING_TIERS = [
     features: ["All Basic Guides", "Investment Strategy Guide", "Portfolio Tracker Templates", "Exclusive Community Access"],
     highlight: true,
     cta: "Get the Bundle",
-    link: "checkoutPro", // References LINKS.checkoutPro
+    link: "checkoutPro", 
   },
   {
     name: "Elite Course",
@@ -83,7 +83,7 @@ export const PRICING_TIERS = [
     features: ["Everything in Pro", "Full Video Course", "1-on-1 Strategy Call", "Lifetime Updates"],
     highlight: false,
     cta: "Join the Elite",
-    link: "checkoutElite", // References LINKS.checkoutElite
+    link: "checkoutElite", 
   },
 ];
 

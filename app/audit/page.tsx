@@ -7,16 +7,41 @@ import Link from "next/link";
 export default function AuditApplication() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // SIMULATION: Here you would connect to your CRM, Email API, or Database (e.g., Firebase/Supabase)
-    setTimeout(() => {
-      setIsLoading(false);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      fullName: formData.get("fullName"),
+      email: formData.get("email"),
+      income: formData.get("income"),
+      debt: formData.get("debt"),
+      objective: formData.get("objective"),
+      urgency: formData.get("urgency"),
+      reason: formData.get("reason"),
+    };
+
+    try {
+      const response = await fetch("/api/audit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed. Please try again later.");
+      }
+
       setIsSubmitted(true);
-    }, 2000);
+    } catch (err: any) {
+      setError(err.message || "An unexpected error occurred.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -46,7 +71,6 @@ export default function AuditApplication() {
     <div className="min-h-screen bg-brand-black text-white selection:bg-brand-gold selection:text-brand-black">
       <div className="fixed inset-0 bg-dark-gradient pointer-events-none -z-10" />
 
-      {/* Header Nav */}
       <nav className="p-6 max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-2 text-slate-500 hover:text-brand-gold transition-colors text-sm font-medium">
           <ArrowLeft className="w-4 h-4" />
@@ -70,10 +94,8 @@ export default function AuditApplication() {
           </p>
         </div>
 
-        {/* The Application Form */}
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-slate-900/40 border border-slate-800 p-8 md:p-12 rounded-3xl backdrop-blur-md">
           
-          {/* Basic Info */}
           <div className="space-y-6">
             <h3 className="text-lg font-bold text-brand-gold flex items-center gap-2">
               <div className="w-1.5 h-5 bg-brand-gold rounded-full" />
@@ -85,6 +107,7 @@ export default function AuditApplication() {
                 <label className="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-wider">Full Name</label>
                 <input 
                   required
+                  name="fullName"
                   type="text" 
                   placeholder="John Doe"
                   className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors"
@@ -94,6 +117,7 @@ export default function AuditApplication() {
                 <label className="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-wider">Email Address</label>
                 <input 
                   required
+                  name="email"
                   type="email" 
                   placeholder="john@example.com"
                   className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors"
@@ -102,7 +126,6 @@ export default function AuditApplication() {
             </div>
           </div>
 
-          {/* Financial Qualification */}
           <div className="space-y-6">
             <h3 className="text-lg font-bold text-brand-gold flex items-center gap-2">
               <div className="w-1.5 h-5 bg-brand-gold rounded-full" />
@@ -112,7 +135,10 @@ export default function AuditApplication() {
             <div className="space-y-4">
               <div>
                 <label className="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-wider">Monthly Income Bracket</label>
-                <select className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors appearance-none">
+                <select 
+                  name="income"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors appearance-none"
+                >
                   <option>$0 - $5,000</option>
                   <option>$5,000 - $15,000</option>
                   <option>$15,000 - $50,000</option>
@@ -122,6 +148,7 @@ export default function AuditApplication() {
               <div>
                 <label className="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-wider">Current Total Debt</label>
                 <input 
+                  name="debt"
                   type="text" 
                   placeholder="e.g. $20k or No Debt"
                   className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors"
@@ -130,7 +157,6 @@ export default function AuditApplication() {
             </div>
           </div>
 
-          {/* Full Width Sections */}
           <div className="md:col-span-2 space-y-6 pt-6 border-t border-slate-800">
             <h3 className="text-lg font-bold text-brand-gold flex items-center gap-2">
               <div className="w-1.5 h-5 bg-brand-gold rounded-full" />
@@ -140,7 +166,10 @@ export default function AuditApplication() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-wider">Primary Objective</label>
-                <select className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors appearance-none">
+                <select 
+                  name="objective"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors appearance-none"
+                >
                   <option>Debt Elimination</option>
                   <option>Wealth Acceleration</option>
                   <option>Retirement Planning</option>
@@ -149,7 +178,10 @@ export default function AuditApplication() {
               </div>
               <div>
                 <label className="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-wider">Urgency Level</label>
-                <select className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors appearance-none">
+                <select 
+                  name="urgency"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors appearance-none"
+                >
                   <option>Low (Planning for future)</option>
                   <option>Medium (Looking to start soon)</option>
                   <option>High (Critical financial need)</option>
@@ -160,6 +192,7 @@ export default function AuditApplication() {
             <div>
               <label className="block text-xs uppercase font-bold text-slate-500 mb-2 tracking-wider">Why should we prioritize your audit?</label>
               <textarea 
+                name="reason"
                 rows={4}
                 placeholder="Briefly describe your current situation and what you hope to achieve..."
                 className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-gold transition-colors resize-none"
@@ -167,8 +200,13 @@ export default function AuditApplication() {
             </div>
           </div>
 
-          {/* Submit Button */}
           <div className="md:col-span-2 pt-6">
+            {error && (
+              <div className="mb-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-center gap-3">
+                <AlertCircle className="w-4 h-4" />
+                {error}
+              </div>
+            )}
             <button 
               disabled={isLoading}
               className="w-full py-5 rounded-2xl bg-brand-gold text-brand-black font-black text-lg hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-3 shadow-xl shadow-brand-gold/20 disabled:opacity-50 disabled:cursor-not-allowed"

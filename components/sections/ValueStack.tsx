@@ -7,21 +7,21 @@ const GAP_SOLUTIONS = [
   {
     gap: "Cash Flow Leakage",
     solution: "The Debt-Exit Framework",
-    benefit: "Stop the bleed. We show you exactly how to rearrange your payments to kill high-interest debt first while maintaining your lifestyle.",
+    benefit: "Address inefficiencies. We show you how to reorganize payments to prioritize high-interest debt while maintaining financial stability.",
     icon: <Zap className="w-6 h-6 text-brand-gold" />,
     color: "from-amber-500/20 to-transparent"
   },
   {
     gap: "Stagnant Growth",
     solution: "The Smart Allocation Tool",
-    benefit: "Stop guessing where your money goes. Our tool calculates your risk-to-reward ratio based on your specific age and goals.",
+    benefit: "Eliminate guesswork. Our tool provides an asset allocation model based on your specific age, goals, and risk tolerance.",
     icon: <TrendingUp className="w-6 h-6 text-brand-gold" />,
     color: "from-amber-500/20 to-transparent"
   },
   {
     gap: "Market Blindness",
     solution: "The Wealth Accelerator Research",
-    benefit: "Get the unfair advantage. Access institutional-grade research on emerging high-yield assets that 99% of retail investors ignore.",
+    benefit: "Gain professional perspective. Access research on emerging high-yield asset classes often overlooked by retail investors.",
     icon: <Target className="w-6 h-6 text-brand-gold" />,
     color: "from-amber-500/20 to-transparent"
   }
@@ -36,7 +36,7 @@ export default function ValueStack() {
         </h2>
         <p className="text-slate-400 text-lg max-w-2xl mx-auto">
           Your Reality Check revealed specific vulnerabilities in your financial structure. 
-          Here is exactly how the Blueprint solves them.
+          Here is how the Blueprint addresses them.
         </p>
       </div>
 
@@ -46,7 +46,6 @@ export default function ValueStack() {
             key={index} 
             className="group relative p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-brand-gold/40 transition-all duration-300 flex flex-col"
           >
-            {/* Gradient Background Effect */}
             <div className={`absolute inset-0 bg-gradient-to-b ${item.color} rounded-3xl pointer-events-none`} />
             
             <div className="relative z-10">
@@ -77,7 +76,6 @@ export default function ValueStack() {
         ))}
       </div>
 
-      {/* Value Summary Box */}
       <div className="mt-20 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-brand-gold/10 via-transparent to-transparent border border-brand-gold/20 text-center max-w-4xl mx-auto relative overflow-hidden">
         <div className="absolute top-0 right-0 p-4 opacity-10">
           <Lock className="w-24 h-24 text-brand-gold" />
@@ -85,7 +83,7 @@ export default function ValueStack() {
         
         <h3 className="text-2xl font-bold mb-4">Everything You Need to Scale</h3>
         <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
-          Instead of spending years in trial-and-error, you are getting the condensed 
+          Instead of years of trial-and-error, you are receiving the condensed 
           research and tools required to move from <span className="text-white">Financial Stress</span> to <span className="text-white">Financial Certainty</span>.
         </p>
         

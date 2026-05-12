@@ -6,13 +6,12 @@ import { Check, Lock, Zap, ShoppingCart, ShieldCheck } from "lucide-react";
 /**
  * PAYMENT CONFIGURATION
  * Replace these placeholders with your LemonSqueezy checkout links.
- * If a link is left empty (""), the app will show a "Coming Soon" message instead of crashing.
  */
 const PRODUCT_LINKS = {
-  debtExit: "",      // Paste link for Debt-Exit Strategy here
-  smartInvest: "",   // Paste link for Smart Invest Tool here
-  wealthAccel: "",   // Paste link for Wealth Accelerator here
-  masterBundle: "",  // Paste link for Master Blueprint here
+  debtExit: "",      
+  smartInvest: "",   
+  wealthAccel: "",   
+  masterBundle: "",  
 };
 
 const INDIVIDUAL_PRODUCTS = [
@@ -41,7 +40,6 @@ const INDIVIDUAL_PRODUCTS = [
 
 export default function Pricing() {
   
-  // Handle the redirection to the payment gateway
   const handleUnlock = (productId: keyof typeof PRODUCT_LINKS) => {
     const url = PRODUCT_LINKS[productId];
     
@@ -66,7 +64,6 @@ export default function Pricing() {
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
         
-        {/* Individual Products Column */}
         <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
           {INDIVIDUAL_PRODUCTS.map((product, index) => (
             <div 
@@ -97,14 +94,12 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* THE MASTER BUNDLE (High-Conversion Card) */}
         <div className="lg:col-span-1 relative">
-          {/* Glow Effect */}
           <div className="absolute inset-0 bg-brand-gold/20 blur-[60px] rounded-full pointer-events-none" />
           
           <div className="relative p-8 rounded-3xl bg-gradient-to-b from-slate-800 to-slate-950 border-2 border-brand-gold shadow-[0_0_40px_rgba(217,119,6,0.2)] flex flex-col">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-gold text-brand-black text-[10px] font-black uppercase tracking-tighter">
-              Best Value
+              Complete Bundle
             </div>
             
             <div className="text-center mb-8">
@@ -146,11 +141,11 @@ export default function Pricing() {
             <div className="mt-6 flex flex-col items-center gap-3">
               <div className="flex items-center gap-2 text-slate-500 text-[10px] font-medium uppercase tracking-wider">
                 <ShieldCheck className="w-3 h-3 text-brand-gold" />
-                Money-Back Guarantee
+                Secure Digital Delivery
               </div>
               <div className="flex items-center gap-2 text-slate-500 text-[10px] font-medium uppercase tracking-wider">
                 <Zap className="w-3 h-3 text-brand-gold" />
-                Instant Digital Delivery
+                Instant Access
               </div>
             </div>
           </div>

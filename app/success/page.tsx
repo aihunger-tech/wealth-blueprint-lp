@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2, Download, ArrowRight, ShieldCheck, Star } from "lucide-react";
+import { CheckCircle2, Download, ArrowRight, ShieldCheck, Star, FileText, Layers, Zap } from "lucide-react";
 import Link from "next/link";
+import SmartInvestCalculator from "@/components/tools/SmartInvestCalculator";
 
 export default function SuccessPage() {
   return (
@@ -12,8 +13,8 @@ export default function SuccessPage() {
       <div className="fixed inset-0 bg-dark-gradient pointer-events-none -z-10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-gold/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-3xl w-full text-center">
-        {/* Success Icon */}
+      <div className="max-w-5xl w-full text-center">
+        {/* Header */}
         <div className="relative flex justify-center mb-8">
           <div className="p-4 rounded-full bg-brand-gold/20 border border-brand-gold/40 animate-bounce">
             <CheckCircle2 className="w-16 h-16 text-brand-gold" />
@@ -23,42 +24,64 @@ export default function SuccessPage() {
           </div>
         </div>
 
-        {/* Headline */}
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-          Welcome to the <span className="text-brand-gold">Inner Circle.</span>
+          Welcome to the <span className="text-brand-gold">Wealth Vault.</span>
         </h1>
         
-        <p className="text-slate-400 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
-          Your payment was successful. Your personalized wealth assets are being 
-          prepared and will be delivered to your email inbox in the next 2-5 minutes.
+        <p className="text-slate-400 text-lg md:text-xl leading-relaxed mb-16 max-w-2xl mx-auto">
+          Your access has been verified. Below is your personalized suite of 
+          financial frameworks and tools.
         </p>
 
-        {/* Asset Access Area */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-md flex flex-col items-center text-center">
-            <div className="p-3 bg-brand-gold/10 rounded-2xl text-brand-gold mb-4">
-              <Download className="w-6 h-6" />
+        {/* THE VAULT GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20 items-start">
+          
+          {/* Asset 1: Debt-Exit (PDF) */}
+          <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-md flex flex-col items-center text-center hover:border-brand-gold/30 transition-all group">
+            <div className="p-4 bg-brand-gold/10 rounded-2xl text-brand-gold mb-6 group-hover:scale-110 transition-transform">
+              <FileText className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Instant Access</h3>
-            <p className="text-slate-500 text-sm mb-6">Can't wait for the email? Download your assets directly from your LemonSqueezy portal.</p>
-            <button 
-              onClick={() => window.location.href = "#"} // You will replace this with the LemonSqueezy Customer Portal link
-              className="px-6 py-3 bg-white text-brand-black font-bold rounded-full text-sm hover:bg-slate-200 transition-all"
-            >
-              Access My Downloads
+            <h3 className="text-xl font-bold mb-3">Debt-Exit Strategy</h3>
+            <p className="text-slate-500 text-sm mb-8 leading-relaxed">
+              The complete framework to reorganize your payments and eliminate high-interest debt.
+            </p>
+            <button className="mt-auto w-full py-3 bg-white text-brand-black font-bold rounded-xl text-sm hover:bg-slate-200 transition-all flex items-center justify-center gap-2">
+              <Download className="w-4 h-4" />
+              Download PDF
             </button>
           </div>
 
-          <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-md flex flex-col items-center text-center">
-            <div className="p-3 bg-brand-gold/10 rounded-2xl text-brand-gold mb-4">
-              <ShieldCheck className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-bold mb-2">Lifetime Access</h3>
-            <p className="text-slate-500 text-sm mb-6">Your purchase includes all future updates to the research and tool logic.</p>
-            <div className="px-6 py-3 rounded-full bg-slate-800 text-slate-400 font-bold text-sm">
-              Verified Member
+          {/* Asset 2: Smart Invest Tool (The Live Calculator) */}
+          <div className="lg:col-span-1 flex flex-col gap-6">
+            <div className="p-8 rounded-3xl bg-brand-gold/5 border border-brand-gold/20 backdrop-blur-md flex flex-col items-center text-center">
+              <div className="p-4 bg-brand-gold/10 rounded-2xl text-brand-gold mb-6">
+                <Zap className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Smart Invest Tool</h3>
+              <p className="text-slate-500 text-sm mb-8 leading-relaxed">
+                Interactive allocation matrix based on your age and risk profile.
+              </p>
+              <div className="w-full">
+                <SmartInvestCalculator />
+              </div>
             </div>
           </div>
+
+          {/* Asset 3: Wealth Accelerator (PDF) */}
+          <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-md flex flex-col items-center text-center hover:border-brand-gold/30 transition-all group">
+            <div className="p-4 bg-brand-gold/10 rounded-2xl text-brand-gold mb-6 group-hover:scale-110 transition-transform">
+              <Layers className="w-8 h-8" />
+            </div>
+            <h3 className="text-xl font-bold mb-3">Wealth Accelerator</h3>
+            <p className="text-slate-500 text-sm mb-8 leading-relaxed">
+              Institutional-grade research on high-yield assets and market opportunities for 2024.
+            </p>
+            <button className="mt-auto w-full py-3 bg-white text-brand-black font-bold rounded-xl text-sm hover:bg-slate-200 transition-all flex items-center justify-center gap-2">
+              <Download className="w-4 h-4" />
+              Access Research
+            </button>
+          </div>
+
         </div>
 
         {/* THE UPSHIFT (Lead Generation for High-Ticket) */}
@@ -71,7 +94,7 @@ export default function SuccessPage() {
             <p className="text-slate-400 mb-8 max-w-xl mx-auto">
               The blueprint is the map, but a professional audit is the GPS. We offer 
               limited 1-on-1 strategy sessions for members who want to accelerate 
-              their results even faster.
+              their results through direct analysis.
             </p>
             <Link 
               href="/audit" 
@@ -81,12 +104,10 @@ export default function SuccessPage() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-          {/* Background Decoration */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 blur-3xl rounded-full" />
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-gold/10 blur-3xl rounded-full" />
         </div>
 
-        {/* Back to Home */}
         <div className="mt-12">
           <Link href="/" className="text-slate-500 hover:text-white text-sm transition-colors font-medium underline underline-offset-4">
             Return to Wealth Blueprint Home

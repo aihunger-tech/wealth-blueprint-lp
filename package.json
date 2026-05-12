@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "latest",
+    "@supabase/supabase-js": "^2.105.4",
     "clsx": "latest",
     "framer-motion": "latest",
     "lucide-react": "^1.14.0",

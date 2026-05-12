@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import SocialProof from "@/components/sections/SocialProof";
@@ -9,18 +10,35 @@ import Pricing from "@/components/sections/Pricing";
 import Preview from "@/components/sections/Preview";
 import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
+import FadeIn from "@/components/ui/FadeIn";
 import { ShieldCheck } from "lucide-react";
 
 export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
+  const [loadingStep, setLoadingStep] = useState(0);
+
+  const loadingMessages = [
+    "Syncing with Wealth Check data...",
+    "Analyzing Income-to-Debt ratios...",
+    "Identifying strategic wealth gaps...",
+    "Generating your personalized blueprint...",
+  ];
 
   useEffect(() => {
-    // This simulates the "Analyzing your Reality Check" process
-    // It creates a psychological bridge between the previous app and this LP
+    // Cycle through loading messages every 700ms
+    const textInterval = setInterval(() => {
+      setLoadingStep((prev) => (prev + 1) % loadingMessages.length);
+    }, 700);
+
+    // Total loading time: 3 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
-    return () => clearTimeout(timer);
+    }, 3000);
+
+    return () => {
+      clearInterval(textInterval);
+      clearTimeout(timer);
+    };
   }, []);
 
   if (isLoading) {
@@ -30,8 +48,10 @@ export default function LandingPage() {
           <div className="absolute w-16 h-16 border-4 border-brand-gold/20 border-t-brand-gold rounded-full animate-spin"></div>
           <ShieldCheck className="w-8 h-8 text-brand-gold animate-pulse" />
         </div>
-        <h2 className="text-2xl font-bold mb-2">Analyzing Your Reality Check...</h2>
-        <p className="text-slate-400 animate-pulse">Generating your personalized wealth blueprint</p>
+        <h2 className="text-2xl font-bold mb-2 tracking-tight">Processing Your Data</h2>
+        <p className="text-slate-400 animate-pulse font-mono text-sm">
+          {loadingMessages[loadingStep]}
+        </p>
       </div>
     );
   }
@@ -41,32 +61,46 @@ export default function LandingPage() {
       {/* Global Background Gradient */}
       <div className="fixed inset-0 bg-dark-gradient pointer-events-none -z-10" />
       
-      {/* Navigation */}
       <Navbar />
 
-      {/* Sections Container */}
-      <div className="flex flex-col transition-opacity duration-1000 opacity-100">
-        {/* Hero Section - We will upgrade this in Step 1.2 */}
-        <Hero />
+      {/* Use motion.div for a smooth global fade-in upon loading completion */}
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1 }}
+        className="flex flex-col"
+      >
+        {/* 
+            Each section is wrapped in <FadeIn />. 
+            The 'delay' prop ensures they enter in a staggered sequence 
+            if they appear in the same viewport.
+        */}
+        <FadeIn>
+          <Hero />
+        </FadeIn>
         
-        {/* Trust Layer - We will upgrade this in Step 1.3 */}
-        <SocialProof />
+        <FadeIn>
+          <SocialProof />
+        </FadeIn>
         
-        {/* Desire Layer (Gap Analysis) - We will upgrade this in Step 1.4 */}
-        <ValueStack />
+        <FadeIn>
+          <ValueStack />
+        </FadeIn>
         
-        {/* Proof Layer - We will upgrade this in Step 1.5 */}
-        <Preview />
+        <FadeIn>
+          <Preview />
+        </FadeIn>
         
-        {/* Monetization Layer (The Vault) - We will upgrade this in Step 1.6 */}
-        <Pricing />
+        <FadeIn>
+          <Pricing />
+        </FadeIn>
         
-        {/* Objection Layer - We will upgrade this in Step 1.7 */}
-        <FAQ />
+        <FadeIn>
+          <FAQ />
+        </FadeIn>
         
-        {/* Exit Layer - We will upgrade this in Step 1.8 */}
         <Footer />
-      </div>
+      </motion.div>
     </main>
   );
 }
