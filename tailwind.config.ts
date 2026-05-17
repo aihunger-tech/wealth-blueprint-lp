@@ -9,25 +9,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          black: "#050505",
-          dark: "#0A0A0A",
-          gold: {
-            light: "#F3D4A5",
-            DEFAULT: "#D4AF37",
-            dark: "#AA8C2C",
-          },
-          zinc: {
-            900: "#111111",
-            800: "#1A1A1A",
-            700: "#262626",
-          }
-        },
-      },
-      backgroundImage: {
-        'gold-gradient': 'linear-gradient(to right, #D4AF37, #F3D4A5, #AA8C2C)',
-        'dark-gradient': 'radial-gradient(circle at top, #111111 0%, #050505 100%)',
-      },
+         brand: {
+           navy: {
+             light: "#1E293B",
+             DEFAULT: "#0F172A",
+             dark: "#020617",
+           },
+           emerald: {
+             light: "#34D399",
+             DEFAULT: "#10B981",
+             dark: "#059669",
+           },
+           slate: {
+             900: "#0F172A",
+             800: "#1E293B",
+             700: "#334155",
+           }
+         },
+       },
+       backgroundImage: {
+         'emerald-gradient': 'linear-gradient(to right, #10B981, #34D399, #059669)',
+         'navy-gradient': 'radial-gradient(circle at top, #1E293B 0%, #020617 100%)',
+       },
     },
   },
   plugins: [],

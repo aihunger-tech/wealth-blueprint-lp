@@ -21,19 +21,23 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-          <Link href="#strategies" className="hover:text-brand-gold transition-colors">Strategies</Link>
-          <Link href="#pricing" className="hover:text-brand-gold transition-colors">Pricing</Link>
-          <Link href="#faq" className="hover:text-brand-gold transition-colors">FAQ</Link>
-        </div>
+         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+           <Link href="/about" className="hover:text-brand-emerald transition-colors">About</Link>
+           <Link href="/methodology" className="hover:text-brand-emerald transition-colors">Methodology</Link>
+           <Link href="/success-stories" className="hover:text-brand-emerald transition-colors">Successes</Link>
+           <Link href="/help-center" className="hover:text-brand-emerald transition-colors">Help</Link>
+           <Link href="#faq" className="hover:text-brand-emerald transition-colors">FAQ</Link>
+         </div>
+
 
         <div className="flex items-center gap-2 md:gap-4">
-          <Button variant="outline" size="sm" className="hidden sm:flex px-4">
-            Login
-          </Button>
-          <Button variant="premium" size="sm" className="px-4 text-xs md:text-sm" asChild>
-            <Link href={LINKS.generalAccess}>Get Access</Link>
-          </Button>
+           <Button variant="outline" size="sm" className="hidden sm:flex px-4" asChild>
+             <Link href="/login">Login</Link>
+           </Button>
+           <Button variant="premium" size="sm" className="px-4 text-xs md:text-sm" asChild>
+             <Link href="/register">Get Access</Link>
+           </Button>
+
         </div>
       </div>
     </nav>

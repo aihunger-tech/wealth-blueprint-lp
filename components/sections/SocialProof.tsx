@@ -32,35 +32,21 @@ export default function SocialProof() {
           {metrics.map((metric, index) => (
             <div 
               key={index} 
-              className="group relative p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-brand-gold/30 transition-all duration-300 text-center"
+              className="group relative p-8 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-brand-emerald/30 transition-all duration-300 text-center"
             >
-              <div className="flex justify-center mb-3 text-brand-gold group-hover:scale-110 transition-transform">
+              <div className="flex justify-center mb-4 text-brand-emerald group-hover:scale-110 transition-transform">
                 {metric.icon}
               </div>
-              <div className="text-3xl md:text-4xl font-extrabold text-white mb-1">
-                {metric.value}
+              <div className="text-3xl font-black text-white mb-1">{metric.value}</div>
+              <div className="text-slate-500 text-sm font-medium mb-4">{metric.label}</div>
+              <div className="flex items-center justify-center gap-2 text-[10px] text-slate-400 uppercase font-bold tracking-wider">
+                <CheckCircle2 className="w-3 h-3 text-brand-emerald" />
+                Verified Metric
               </div>
-              <div className="text-slate-500 text-sm font-medium uppercase tracking-wide">
-                {metric.label}
-              </div>
-              
-              <div className="absolute inset-0 rounded-2xl bg-brand-gold/0 group-hover:bg-brand-gold/5 transition-colors pointer-events-none" />
+              <div className="absolute inset-0 rounded-2xl bg-brand-emerald/0 group-hover:bg-brand-emerald/5 transition-colors pointer-events-none" />
             </div>
           ))}
         </div>
-
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
-            <CheckCircle2 className="w-3 h-3 text-brand-gold" />
-            Verified Financial Methodology
-          </div>
-          <div className="hidden md:block w-1 h-1 rounded-full bg-slate-700" />
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
-            <CheckCircle2 className="w-3 h-3 text-brand-gold" />
-            Secure SSL Encryption
-          </div>
-        </div>
-
       </div>
     </section>
   );
