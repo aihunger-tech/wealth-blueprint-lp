@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { CheckCircle2, ArrowRight, ArrowLeft, Landmark, TrendingUp, ShieldCheck, Target } from "lucide-react";
+import { CheckCircle2, ArrowRight, ArrowLeft, Landmark, TrendingUp, ShieldCheck, Target, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 type Step = "goals" | "assets" | "risk";
