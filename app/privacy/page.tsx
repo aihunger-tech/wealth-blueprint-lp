@@ -1,9 +1,12 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Lock } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
+
+export const metadata = {
+  title: "Privacy Policy | The Wealth Blueprint",
+  description: "Our commitment to your data security and privacy. Learn how we protect your financial information.",
+};
 
 export default function PrivacyPage() {
   return (
@@ -35,22 +38,22 @@ export default function PrivacyPage() {
             <h3 className="text-white font-bold text-xl mb-4">2. Use of Financial Data</h3>
             <p>
               Financial data provided during audits is used exclusively to generate your personalized 
-              wealth blueprint. We do not sell, rent, or trade your financial information 
+              wealth blueprint. We do not sell, rent, la or trade your financial information 
               with third-party marketers.
             </p>
           </div>
 
           <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800">
             <h3 className="text-white font-bold text-xl mb-4">3. Data Security</h3>
- la <p>
+            <p>
               We employ industry-standard encryption and secure database protocols via Supabase 
               to protect your data. However, no method of transmission over the internet is 100% 
               secure, and we encourage users to use strong, unique passwords.
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800">
-            <h3 className="text-white font-bold text-xl mb-4"> la 4. Your Rights</h3>
+          <div className="p-8 rounded-3 laC-s- la s de l 20 rounded-3xl bg-slate-900/50 border border-slate-800">
+            <h3 className="text-white font-bold text-xl mb-4">4. Your Rights</h3>
             <p>
               You have the right to request a copy of the data we hold about you or request the total 
               deletion of your account and associated records at any time by contacting our 

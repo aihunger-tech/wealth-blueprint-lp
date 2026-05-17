@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight, Scale, Database, Zap } from "lucide-react";
@@ -46,6 +44,31 @@ export default function MethodologyPage() {
               icon: <Zap className="w-6 h-6 text-brand-emerald" />,
               desc: "We translate theoretical models into actionable blueprints. If a strategy cannot be executed by an individual without institutional software, it is discarded."
             }
+          ].map((item, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative p-8 rounded-3xl bg-slate-900/50 border border-slate-800 flex flex-col md:flex-row gap-8 items-start"
+            >
+              <div className="bg-brand-emerald text-brand-navy-dark font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                {item.step}
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-3">
+                  {item.icon}
+                  <h3 className="text-2xl font-bold">{item.title}</h3>
+                </div>
+                <p className="text-slate-400 text-lg leading-relaxed">{item.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
           ].map((item, idx) => (
             <motion.div 
               key={idx}

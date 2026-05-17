@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Target, TrendingUp, Users } from "lucide-react";
@@ -26,7 +24,7 @@ export default function AboutPage() {
             <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
               Wealth Blueprint was founded on a single principle: that institutional-grade financial 
               strategies should be accessible to the driven individual. We strip away the jargon 
- la to provide a clear, research-backed path to sustainable wealth.
+              to provide a clear, research-backed path to sustainable wealth.
             </p>
           </motion.div>
         </FadeIn>

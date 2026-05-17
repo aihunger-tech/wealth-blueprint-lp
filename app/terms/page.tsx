@@ -1,9 +1,12 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
+
+export const metadata = {
+  title: "Terms of Service | The Wealth Blueprint",
+  description: "Read our terms of service regarding the use of our proprietary wealth strategies and educational materials.",
+};
 
 export default function TermsPage() {
   return (
@@ -46,7 +49,7 @@ export default function TermsPage() {
             <p>
               The proprietary methodologies, blueprints, and research papers are the intellectual 
               property of Wealth Blueprint. Unauthorized distribution or resale of these 
- la materials is strictly prohibited and may lead to legal action.
+              materials is strictly prohibited and may lead to legal action.
             </p>
           </div>
 
