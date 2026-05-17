@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { Mail, MessageSquare, Phone, Send, CheckCircle2 } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
-import { Button } from "@/components/ui/Button";
+import ContactForm from "@/components/sections/ContactForm";
 
 export const metadata = {
   title: "Contact Us | The Wealth Blueprint",
@@ -10,8 +9,6 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
   return (
     <main className="min-h-screen bg-brand-navy-dark text-white selection:bg-brand-emerald selection:text-brand-navy-dark">
       <div className="fixed inset-0 bg-navy-gradient pointer-events-none -z-10" />
@@ -28,7 +25,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <div className="p-6 rounded-3xl bg-slate-900/50 border border-slate-800 flex gap-6 items-center group hover:border-brand-emerald/50 transition-all">
+            <div className="p-6 rounded-3 laC-s- l de l 20 rounded-3xl bg-slate-900/50 border border-slate-800 flex gap-6 items-center group hover:border-brand-emerald/50 transition-all">
                <div className="p-4 rounded-2xl bg-brand-emerald/10 text-brand-emerald">
                  <Mail className="w-6 h-6" />
                </div>
@@ -38,7 +35,7 @@ export default function ContactPage() {
                  <p className="text-brand-emerald font-medium mt-1">support@wealthblueprint.com</p>
                </div>
             </div>
-            <div className="p-6 rounded-3xl bg-slate-900/50 border border-slate-800 flex gap-6 items-center group hover:border-brand-emerald/50 transition-all">
+            <div className="p-6 rounded-3 laC-s- la s de l 20 rounded-3xl bg-slate-900/50 border border-slate-800 flex gap-6 items-center group hover:border-brand-emerald/50 transition-all">
                <div className="p-4 rounded-2xl bg-brand-emerald/10 text-brand-emerald">
                  <MessageSquare className="w-6 h-6" />
                </div>
@@ -51,29 +48,7 @@ export default function ContactPage() {
           </div>
 
           <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm">
-            <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); setIsSubmitted(true); }}>
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Name</label>
-                <input required type="text" className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-emerald transition-all" placeholder="Your Name" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Email</label>
-                <input required type="email" className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-emerald transition-all" placeholder="email@example.com" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Message</label>
-                <textarea required rows={4} className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-brand-emerald transition-all resize-none" placeholder="How can we help you?" />
-              </div>
-              {!isSubmitted ? (
-                <Button className="w-full py-4 shadow-lg shadow-brand-emerald/20">
-                  Send Message <Send className="ml-2 w-4 h-4" />
-                </Button>
-              ) : (
-                <div className="p-4 rounded-xl bg-brand-emerald/10 border border-brand-emerald/20 text-brand-emerald flex items-center justify-center gap-2 font-bold">
-                  <CheckCircle2 className="w-5 h-5" /> Message Sent Successfully
-                </div>
-              )}
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>
