@@ -1,7 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { ShieldCheck, Target, TrendingUp, Users } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
+import MotionDiv from "@/components/ui/MotionDiv";
 
 export const metadata = {
   title: "About The Wealth Blueprint | Our Mission",
@@ -15,7 +15,7 @@ export default function AboutPage() {
       
       <section className="pt-32 pb-20 px-6 max-w-6xl mx-auto">
         <FadeIn>
-          <motion.div 
+          <MotionDiv 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
@@ -26,7 +26,7 @@ export default function AboutPage() {
               strategies should be accessible to the driven individual. We strip away the jargon 
               to provide a clear, research-backed path to sustainable wealth.
             </p>
-          </motion.div>
+          </MotionDiv>
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
@@ -51,6 +51,24 @@ export default function AboutPage() {
               title: "Research-Driven",
               description: "Every resource we sell is the result of hundreds of hours of primary research into global financial markets and capital efficiency."
             }
+          ].map((item, idx) => (
+            <MotionDiv 
+              key={idx}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm hover:border-brand-emerald/50 transition-colors"
+            >
+              <div className="mb-4">{item.icon}</div>
+              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+              <p className="text-slate-400 leading-relaxed">{item.description}</p>
+            </MotionDiv>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
           ].map((item, idx) => (
             <motion.div 
               key={idx}

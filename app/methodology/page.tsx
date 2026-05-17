@@ -1,7 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Scale, Database, Zap } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
+import MotionDiv from "@/components/ui/MotionDiv";
 
 export const metadata = {
   title: "Our Methodology | The Science of Wealth",
@@ -45,7 +45,7 @@ export default function MethodologyPage() {
               desc: "We translate theoretical models into actionable blueprints. If a strategy cannot be executed by an individual without institutional software, it is discarded."
             }
           ].map((item, idx) => (
-            <motion.div 
+            <MotionDiv 
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export default function MethodologyPage() {
                 </div>
                 <p className="text-slate-400 text-lg leading-relaxed">{item.desc}</p>
               </div>
-            </motion.div>
+            </MotionDiv>
           ))}
         </div>
       </section>
