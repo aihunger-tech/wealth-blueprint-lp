@@ -69,21 +69,3 @@ export default function AboutPage() {
     </main>
   );
 }
-          ].map((item, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm hover:border-brand-emerald/50 transition-colors"
-            >
-              <div className="mb-4">{item.icon}</div>
-              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-              <p className="text-slate-400 leading-relaxed">{item.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-    </main>
-  );
-}
