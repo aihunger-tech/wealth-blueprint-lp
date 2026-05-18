@@ -35,7 +35,7 @@ export default function DashboardSidebar({ activeModule, setActiveModule }: Dash
         {modules.map((mod) => (
           <button
             key={mod.id}
-            onClick={() => setActiveModule(mod.id)}
+            onClick={() => setActiveModule(mod.id as ModuleId)}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
               activeModule === mod.id 
               ? "bg-brand-emerald text-brand-navy-dark font-bold shadow-lg shadow-brand-emerald/20" 

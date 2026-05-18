@@ -23,6 +23,7 @@ export interface PortfolioAsset {
   symbol: string;
   amount: number;
   averagePrice: number;
+  currentPrice?: number;
   type: 'crypto' | 'stock' | 'cash' | 'gold';
 }
 
