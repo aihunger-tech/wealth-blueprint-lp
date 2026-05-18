@@ -2,6 +2,12 @@ import React from "react";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE_CONFIG } from "@/constants";
+import { validateEnv } from "@/lib/env";
+
+// Validate environment variables on startup
+if (typeof window === "undefined") {
+  validateEnv();
+}
 
 // Standard Next.js Metadata
 export const metadata: Metadata = {
