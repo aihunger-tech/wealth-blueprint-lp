@@ -13,7 +13,7 @@ interface DashboardSidebarProps {
 }
 
 export default function DashboardSidebar({ activeModule, setActiveModule }: DashboardSidebarProps) {
-  const modules = [
+  const modules: { id: ModuleId; label: string; icon: any }[] = [
     { id: "command", label: "Command Center", icon: Wallet },
     { id: "accelerator", label: "Accelerator", icon: TrendingUp },
     { id: "audit", label: "Wealth Audit", icon: ShieldCheck },
