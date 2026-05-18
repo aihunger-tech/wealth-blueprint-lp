@@ -29,7 +29,7 @@ export function calculatePortfolioGap(
     const targetPercent = parseInt(target.allocation);
     const gap = targetPercent - current;
 
-    let action = 'HOLD';
+    let action: 'BUY' | 'SELL' | 'HOLD' = 'HOLD';
     if (gap > 5) action = 'BUY';
     else if (gap < -5) action = 'SELL';
 
