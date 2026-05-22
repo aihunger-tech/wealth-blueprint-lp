@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Zap, RefreshCw, ShieldAlert, TrendingUp, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 export default function OptimizerTab({ 
   assets = [], 
@@ -20,9 +21,9 @@ export default function OptimizerTab({
       }));
 
       setOptimizationPlan({
-        totalLeakage: analyzedAssets.reduce((sum, a) => sum + a.taxLiability, 0),
+        totalLeakage: analyzedAssets.reduce((sum: number, a: any) => sum + a.taxLiability, 0),
         savingsPotential: 1240,
-        recommendations: analyzedAssets.filter(a => a.suggestedMove !== "HOLD")
+        recommendations: analyzedAssets.filter((a: any) => a.suggestedMove !== "HOLD")
       });
       setIsOptimizing(false);
     }, 1500);

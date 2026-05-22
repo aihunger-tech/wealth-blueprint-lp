@@ -15,6 +15,7 @@ import GapTab from "./components/GapTab";
 import ScenariosTab from "./components/ScenariosTab";
 import AllocatorTab from "./components/AllocatorTab";
 import ProjectorTab from "./components/ProjectorTab";
+import OptimizerTab from "./components/OptimizerTab";
 
 type RiskLevel = "Conservative" | "Moderate" | "Aggressive";
 

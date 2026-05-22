@@ -51,10 +51,10 @@ export default function GapTab({
                           max="100"
                           className="w-12 bg-transparent text-xs text-slate-500 border-b border-slate-700 focus:border-brand-emerald outline-none text-center"
                           value={targetAllocations.find((t: any) => t.asset === gap.asset)?.allocation || 0}
-                          onChange={(e) => {
-                            const val = parseInt(e.target.value);
-                            setTargetAllocations(prev => prev.map((t: any) => t.asset === gap.asset ? { ...t, allocation: val } : t));
-                          }}
+                           onChange={(e) => {
+                             const val = parseInt(e.target.value);
+                             setTargetAllocations((prev: any[]) => prev.map((t: any) => t.asset === gap.asset ? { ...t, allocation: val } : t));
+                           }}
                         />
                         <span className="text-xs text-slate-500">%</span>
                       </div>

@@ -51,15 +51,15 @@ export default function AllocatorTab({
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            {Object.entries(allocation).map(([key, val]) => (
-              <div key={key} className="p-4 rounded-2xl bg-slate-800/50 border border-slate-700 group hover:border-brand-emerald/30 transition-all">
-                <div className="text-xs uppercase tracking-widest text-slate-500 font-bold mb-1 flex items-center justify-between">
-                  {key}
-                  <CheckCircle2 className="w-3 h-3 text-brand-emerald opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <div className="text-2xl font-black text-white">{val}%</div>
-              </div>
-            ))}
+             {Object.entries(allocation).map(([key, val]) => (
+               <div key={key} className="p-4 rounded-2xl bg-slate-800/50 border border-slate-700 group hover:border-brand-emerald/30 transition-all">
+                 <div className="text-xs uppercase tracking-widest text-slate-500 font-bold mb-1 flex items-center justify-between">
+                   {key}
+                   <CheckCircle2 className="w-3 h-3 text-brand-emerald opacity-0 group-hover:opacity-100 transition-opacity" />
+                 </div>
+                 <div className="text-2xl font-black text-white">{val as React.ReactNode}%</div>
+               </div>
+             ))}
           </div>
         </div>
 
