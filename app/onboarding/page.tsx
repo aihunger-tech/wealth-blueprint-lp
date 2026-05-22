@@ -158,9 +158,10 @@ export default function OnboardingPage() {
                 <Button variant="ghost" onClick={prevStep} className="text-slate-400 hover:text-white">
                   <ArrowLeft className="w-4 h-4 mr-2" /> Back
                 </Button>
-                <Button onClick={() => router.push("/dashboard")} className="bg-brand-emerald text-brand-navy-dark font-bold">
-                  Finish & Generate Blueprint <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                 <Button onClick={() => router.push("/dashboard")} className="bg-brand-emerald text-brand-navy-dark font-bold">
+                   Generate Blueprint <ArrowRight className="w-4 h-4 ml-2" />
+                 </Button>
+
               </div>
             </motion.div>
           )}

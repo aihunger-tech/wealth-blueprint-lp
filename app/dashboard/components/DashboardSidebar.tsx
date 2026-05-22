@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useWealthStore } from "@/store/useWealthStore";
 
-type ModuleId = "audit" | "command" | "accelerator" | "ai";
+type ModuleId = "audit" | "command" | "accelerator" | "ai" | "settings";
 
 interface DashboardSidebarProps {
   activeModule: ModuleId;
@@ -27,9 +27,10 @@ export default function DashboardSidebar({ activeModule, setActiveModule }: Dash
     <>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed bottom-6 right-6 z-50 p-4 rounded-full bg-brand-emerald text-brand-navy-dark shadow-xl"
+        className="lg:hidden fixed top-6 left-6 z-50 p-3 rounded-xl bg-brand-emerald text-brand-navy-dark shadow-xl flex items-center gap-2"
       >
-        <LayoutDashboard className="w-6 h-6" />
+        <LayoutDashboard className="w-5 h-5" />
+        <span className="text-xs font-bold">Menu</span>
       </button>
 
       <div className={`fixed lg:static inset-y-0 left-0 z-50 w-64 h-screen bg-brand-navy-dark border-r border-slate-800 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
@@ -71,11 +72,15 @@ export default function DashboardSidebar({ activeModule, setActiveModule }: Dash
             <Home className="w-5 h-5" />
             <span>Back to Landing Page</span>
           </Link>
-          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all">
-            <Settings className="w-5 h-5" />
-            <span>Settings</span>
-          </button>
-        </div>
+        <Link 
+          href="/dashboard/settings" 
+          className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeModule === 'settings' ? "bg-brand-emerald text-brand-navy-dark font-bold" : "text-slate-400 hover:text-white hover:bg-slate-800"}`}
+        >
+          <Settings className="w-5 h-5" />
+          <span>Settings</span>
+        </Link>
+      </div>
+
         {isOpen && <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[-1]" onClick={() => setIsOpen(false)} />}
       </div>
     </>

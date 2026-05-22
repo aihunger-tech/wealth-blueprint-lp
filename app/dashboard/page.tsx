@@ -9,7 +9,7 @@ import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function DashboardPage() {
-  const [activeModule, setActiveModule] = useState<"audit" | "command" | "accelerator" | "ai">("command");
+  const [activeModule, setActiveModule] = useState<"audit" | "command" | "accelerator" | "ai" | "settings">("command");
 
   const renderModule = () => {
     switch (activeModule) {
@@ -49,9 +49,9 @@ export default function DashboardPage() {
     return (
       <div className="flex h-screen bg-brand-navy-dark overflow-hidden">
         <DashboardSidebar activeModule={activeModule} setActiveModule={setActiveModule} />
-        <main className="flex-1 overflow-y-auto relative">
+        <main className="flex-1 h-full overflow-y-auto relative overflow-x-hidden">
           <div className="absolute inset-0 bg-navy-gradient opacity-50 pointer-events-none -z-10" />
-          <div className="p-4 md:p-8">
+          <div className="p-4 md:p-8 min-h-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeModule}

@@ -31,14 +31,15 @@ const Navbar = () => {
 
 
         <div className="flex items-center gap-2 md:gap-4">
+           {/* we assume a mock auth state here or use a store if available */}
            <Button variant="outline" size="sm" className="hidden sm:flex px-4" asChild>
              <Link href="/login">Login</Link>
            </Button>
            <Button variant="premium" size="sm" className="px-4 text-xs md:text-sm" asChild>
              <Link href="/register">Get Access</Link>
            </Button>
+         </div>
 
-        </div>
       </div>
     </nav>
   );
