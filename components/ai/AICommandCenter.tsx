@@ -143,16 +143,17 @@ export default function AICommandCenter() {
     }
   };
 
-  return (
-    <div className="fixed bottom-8 right-8 z-50 font-sans">
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="mb-6 w-[400px] h-[500px] bg-slate-900/95 backdrop-blur-xl border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
-          >
+    return (
+      <div className="fixed bottom-8 right-8 md:right-8 z-40 font-sans lg:z-50">
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="mb-6 w-[calc(100vw-32px)] max-w-[400px] h-[500px] bg-slate-900/95 backdrop-blur-xl border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            >
+
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
               <div className="flex items-center gap-2">
                 <Bot className="text-brand-emerald w-5 h-5" />
@@ -214,7 +215,8 @@ export default function AICommandCenter() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={(e) => { e.stopPropagation(); setIsOpen(!isOpen); }}
-        className="w-14 h-14 rounded-full bg-brand-emerald shadow-lg shadow-brand-emerald/30 flex items-center justify-center text-brand-navy-dark hover:shadow-brand-emerald/50 transition-all group"
+        className="w-14 h-14 rounded-full bg-brand-emerald shadow-lg shadow-brand-emerald/30 flex items-center justify-center text-brand-navy-dark hover:shadow-brand-emerald/50 transition-all group relative"
+        style={{ zIndex: 40 }}
       >
         {isOpen ? <X className="w-6 h-6" /> : <Bot className="w-6 h-6 group-hover:rotate-12 transition-transform" />}
       </motion.button>
