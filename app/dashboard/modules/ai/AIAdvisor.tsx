@@ -26,23 +26,27 @@ export default function AIAdvisor() {
       currentMarket: "Volatile (VIX 24)",
     };
 
-    try {
-      const res = await fetch('/api/wealth-core/ai/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          prompt: customPrompt || `Run ${tool} analysis on my financial data.`, 
-          context 
-        }),
-      });
-      const data = await res.json();
-      
-      setChatHistory(prev => [...prev, { role: 'user', content: customPrompt || `Triggering ${tool} analysis...` }, { role: 'ai', content: data.text || data.message || "Analysis complete. See the updated strategic roadmap." }]);
-    } catch (e) {
-      setChatHistory(prev => [...prev, { role: 'ai', content: "I encountered an error connecting to the AI core. Please check your NVIDIA API key." }]);
-    } finally {
-      setIsAnalyzing(false);
-    }
+      try {
+        const res = await fetch('/api/wealth-core/ai/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            prompt: customPrompt || `Run ${tool} analysis on my financial data.`, 
+            context 
+          }),
+        });
+        const data = await res.json();
+        
+        if (!res.ok) {
+          throw new Error(data.error || `Server error: ${res.status}`);
+        }
+        
+        setChatHistory(prev => [...prev, { role: 'user', content: customPrompt || `Triggering ${tool} analysis...` }, { role: 'ai', content: data.text || "AI returned an empty response." }]);
+      } catch (e: any) {
+        setChatHistory(prev => [...prev, { role: 'ai', content: `Error: ${e.message}` }]);
+      } finally {
+        setIsAnalyzing(false);
+      }
   };
 
   return (

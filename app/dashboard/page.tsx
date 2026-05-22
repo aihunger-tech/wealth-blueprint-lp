@@ -39,8 +39,8 @@ export default function DashboardPage() {
         );
       default: 
         return (
-          <ErrorBoundary name="Wealth Audit">
-            <WealthAuditModule />
+          <ErrorBoundary name="Command Center">
+            <CommandCenter />
           </ErrorBoundary>
         );
     }

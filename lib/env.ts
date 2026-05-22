@@ -1,10 +1,10 @@
 export const env = {
-  supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  gnewsApiKey: process.env.GNEWS_API_KEY!,
-  finnhubApiKey: process.env.FINNHUB_API_KEY!,
-  cmcApiKey: process.env.CMC_API_KEY!,
-  nvidiaApiKey: process.env.NVIDIA_API_KEY!,
+  supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+  gnewsApiKey: process.env.GNEWS_API_KEY || '',
+  finnhubApiKey: process.env.FINNHUB_API_KEY || '',
+  cmcApiKey: process.env.CMC_API_KEY || '',
+  nvidiaApiKey: process.env.NVIDIA_API_KEY || '',
 };
 
 export function validateEnv() {
@@ -20,9 +20,11 @@ export function validateEnv() {
   const missing = required.filter((key) => !process.env[key]);
 
   if (missing.length > 0) {
-    console.error(`Missing environment variables: ${missing.join(', ')}`);
+    const msg = `Missing environment variables: ${missing.join(', ')}`;
     if (process.env.NODE_ENV === 'production') {
-      throw new Error(`Missing critical environment variables: ${missing.join(', ')}`);
+      throw new Error(msg);
+    } else {
+      console.warn(`[DEV WARNING] ${msg}. Check your .env.local file.`);
     }
   }
 }

@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   authors: [{ name: "aihunger-tech" }],
 };
 
-// Separate Viewport export for Next.js 14+ compatibility
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -35,3 +34,4 @@ export default function RootLayout({
     </html>
   );
 }
+
