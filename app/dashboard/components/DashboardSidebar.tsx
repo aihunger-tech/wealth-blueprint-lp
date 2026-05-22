@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
 
-import { LayoutDashboard, Wallet, TrendingUp, ShieldCheck, BrainCircuit, Settings } from "lucide-react";
+import { LayoutDashboard, Wallet, TrendingUp, ShieldCheck, BrainCircuit, Settings, LogOut, Home } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useWealthStore } from "@/store/useWealthStore";
 
 type ModuleId = "audit" | "command" | "accelerator" | "ai";
@@ -49,7 +50,14 @@ export default function DashboardSidebar({ activeModule, setActiveModule }: Dash
 
       </nav>
 
-      <div className="p-4 border-t border-slate-800">
+      <div className="p-4 border-t border-slate-800 space-y-2">
+        <Link 
+          href="/" 
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all"
+        >
+          <Home className="w-5 h-5" />
+          <span>Back to Landing Page</span>
+        </Link>
         <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all">
           <Settings className="w-5 h-5" />
           <span>Settings</span>
