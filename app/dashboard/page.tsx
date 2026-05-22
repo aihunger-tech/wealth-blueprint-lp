@@ -46,25 +46,26 @@ export default function DashboardPage() {
     }
   };
 
-  return (
-    <div className="flex h-screen bg-brand-navy-dark overflow-hidden">
-      <DashboardSidebar activeModule={activeModule} setActiveModule={setActiveModule} />
-      <main className="flex-1 overflow-y-auto relative">
-        <div className="absolute inset-0 bg-navy-gradient opacity-50 pointer-events-none -z-10" />
-        <div className="p-8">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeModule}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-            >
-              {renderModule()}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </main>
-    </div>
-  );
+    return (
+      <div className="flex h-screen bg-brand-navy-dark overflow-hidden">
+        <DashboardSidebar activeModule={activeModule} setActiveModule={setActiveModule} />
+        <main className="flex-1 overflow-y-auto relative">
+          <div className="absolute inset-0 bg-navy-gradient opacity-50 pointer-events-none -z-10" />
+          <div className="p-4 md:p-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeModule}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+              >
+                {renderModule()}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </main>
+      </div>
+    );
+
 }

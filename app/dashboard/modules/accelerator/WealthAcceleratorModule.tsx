@@ -84,24 +84,24 @@ export default function WealthAcceleratorModule() {
 
   return (
     <div className="flex flex-col gap-6 relative">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-         {[
-           { id: "intelligence", label: "Intelligence", icon: TrendingUp },
-           { id: "gap", label: "Gap Analysis", icon: Target },
-           { id: "scenarios", label: "Scenarios", icon: Zap },
-           { id: "allocator", label: "Allocator", icon: PieChart },
-           { id: "projector", label: "Projector", icon: Wallet },
-         ].map((tab) => (
-           <button 
-             key={tab.id}
-             onClick={() => setActiveTab(tab.id as any)}
-             className={`p-3 rounded-xl border transition-all flex items-center justify-center gap-2 ${activeTab === tab.id ? "bg-brand-emerald text-brand-navy-dark border-brand-emerald shadow-lg shadow-brand-emerald/20" : "bg-slate-900 text-slate-400 border-slate-800 hover:border-slate-700"}`}
-           >
-             <tab.icon className="w-4 h-4" /> <span className="font-bold text-xs hidden sm:inline">{tab.label}</span>
-           </button>
-         ))}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          {[
+            { id: "intelligence", label: "Intelligence", icon: TrendingUp },
+            { id: "gap", label: "Gap Analysis", icon: Target },
+            { id: "scenarios", label: "Scenarios", icon: Zap },
+            { id: "allocator", label: "Allocator", icon: PieChart },
+            { id: "projector", label: "Projector", icon: Wallet },
+          ].map((tab) => (
+            <button 
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`p-3 rounded-xl border transition-all flex items-center justify-center gap-2 min-w-[100px] ${activeTab === tab.id ? "bg-brand-emerald text-brand-navy-dark border-brand-emerald shadow-lg shadow-brand-emerald/20" : "bg-slate-900 text-slate-400 border-slate-800 hover:border-slate-700"}`}
+            >
+              <tab.icon className="w-4 h-4" /> <span className="font-bold text-xs">{tab.label}</span>
+            </button>
+          ))}
+        </div>
 
-      </div>
 
       <AnimatePresence mode="wait">
         {activeTab === "intelligence" && (
